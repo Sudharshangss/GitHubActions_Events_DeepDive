@@ -3,7 +3,18 @@ on:
   pull_request:
     types:
       - opened
-  workflow_dispatch:    
+    branches:
+      - master           # Master branch only
+      - 'dev-*'          # dev-new, dev-this-to 
+      - 'fleet/**'       # fleet/new, fleet/new/branch
+  workflow_dispatch:
+  push:
+    branches:
+      - master           # Master branch only
+      - 'dev-*'          # dev-new, dev-this-to 
+      - 'fleet/**'       # fleet/new, fleet/new/branch
+    paths-ignore:
+      - '.github/workflows/*'        
 jobs:
   deploy:
     runs-on: windows-latest
